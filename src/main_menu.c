@@ -220,6 +220,8 @@ static void NewGameBirchSpeech_ClearGenderWindow(u8, u8);
 static void Task_NewGameBirchSpeech_WhatsYourName(u8);
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8);
 static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8);
+static void Task_NewGameBirchSpeech_WrongGender(u8);
+static void Task_NewGameBirchSpeech_WaitForWrongGenderToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8);
 static void Task_NewGameBirchSpeech_StartNamingScreen(u8);
@@ -1442,6 +1444,8 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)
     {
         gTasks[taskId].tBG1HOFS = -60;
         gTasks[taskId].func = Task_NewGameBirchSpeech_StartPlayerFadeIn;
+
+
     }
 }
 
@@ -1507,13 +1511,13 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
     {
         case MALE:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = gender;
+            gSaveBlock2Ptr->playerGender = FEMALE;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WrongGender;
             break;
         case FEMALE:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = gender;
+            gSaveBlock2Ptr->playerGender = FEMALE;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
@@ -1569,6 +1573,20 @@ static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8 taskId)
             gTasks[taskId].func = Task_NewGameBirchSpeech_ChooseGender;
         }
     }
+}
+
+static void Task_NewGameBirchSpeech_WrongGender(u8 taskId)
+{
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_Birch_WrongGender);
+    AddTextPrinterForMessage(TRUE);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWrongGenderToPrint;
+}
+
+static void Task_NewGameBirchSpeech_WaitForWrongGenderToPrint(u8 taskId)
+{
+    if (!RunTextPrintersAndIsPrinter0Active())
+        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
 }
 
 static void Task_NewGameBirchSpeech_WhatsYourName(u8 taskId)
@@ -1896,7 +1914,7 @@ static void AddBirchSpeechObjects(u8 taskId)
     gSprites[lotadSpriteId].oam.priority = 0;
     gSprites[lotadSpriteId].invisible = TRUE;
     gTasks[taskId].tLotadSpriteId = lotadSpriteId;
-    brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, &gDecompressionBuffer[0]);
+    brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, &gDecompressionBuffer[0]);
     gSprites[brendanSpriteId].callback = SpriteCB_Null;
     gSprites[brendanSpriteId].invisible = TRUE;
     gSprites[brendanSpriteId].oam.priority = 0;
