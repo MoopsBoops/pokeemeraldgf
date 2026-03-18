@@ -36,7 +36,7 @@ gText_Birch_BoyOrGirl::
 	.string "Or are you a girl?$"
 
 gText_Birch_WrongGender::
-    .string "WRONG!$"
+    .string "WRONG!!$"
 
 gText_Birch_WhatsYourName::
 	.string "All right.\n"
