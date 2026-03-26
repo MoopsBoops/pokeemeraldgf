@@ -1510,7 +1510,7 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
     switch (gender)
     {
         case MALE:
-            PlaySE(SE_SELECT);
+            PlaySE(SE_RG_HELP_ERROR);
             gSaveBlock2Ptr->playerGender = FEMALE;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WrongGender;
