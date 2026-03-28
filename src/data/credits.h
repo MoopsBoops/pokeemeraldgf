@@ -1,6 +1,7 @@
 enum
 {
     PAGE_TITLE,
+    PAGE_HACK,
     PAGE_DIRECTOR,
     PAGE_ART_DIRECTOR,
     PAGE_WORLD_DIRECTOR,
@@ -65,6 +66,10 @@ enum
 static const u8 sCreditsText_EmptyString[]                    = _("");
 static const u8 sCreditsText_PkmnEmeraldVersion[]             = _("POKéMON EMERALD VERSION");
 static const u8 sCreditsText_Credits[]                        = _("Credits");
+static const u8 sCreditsText_HackEdits[]                      = _("Romhack");
+static const u8 sCreditsText_Madeline[]                       = _("Madeline Barton");
+static const u8 sCreditsText_Aether[]                         = _("Aether Fae");
+
 static const u8 sCreditsText_ExecutiveDirector[]              = _("Executive Director");
 static const u8 sCreditsText_Director[]                       = _("Director");
 static const u8 sCreditsText_ArtDirector[]                    = _("Art Director");
@@ -381,6 +386,10 @@ static const struct CreditsEntry sCreditsEntry_NicolaPrattBarlow                
 static const struct CreditsEntry sCreditsEntry_ShellieDow                       = { 0, FALSE, sCreditsText_ShellieDow};
 static const struct CreditsEntry sCreditsEntry_ErikJohnson                      = { 0, FALSE, sCreditsText_ErikJohnson};
 
+static const struct CreditsEntry sCreditsEntry_HackEdits                        = { 0, FALSE, sCreditsText_HackEdits};
+static const struct CreditsEntry sCreditsEntry_Madeline                         = { 0, FALSE, sCreditsText_Madeline};
+static const struct CreditsEntry sCreditsEntry_Aether                           = { 0, FALSE, sCreditsText_Aether};
+
 #define _ &sCreditsEntry_EmptyString
 static const struct CreditsEntry *const sCreditsEntryPointerTable[PAGE_COUNT][ENTRIES_PER_PAGE] =
 {
@@ -391,6 +400,15 @@ static const struct CreditsEntry *const sCreditsEntryPointerTable[PAGE_COUNT][EN
         _,
         _
     },
+    [PAGE_HACK] = {
+        _,
+        &sCreditsEntry_HackEdits,
+        &sCreditsEntry_Madeline,
+        &sCreditsEntry_Aether,
+        _,
+
+    },
+
     [PAGE_DIRECTOR] = {
         _,
         &sCreditsEntry_Director,
