@@ -68,7 +68,7 @@ static const u8 sCreditsText_PkmnEmeraldVersion[]             = _("POKéMON EMER
 static const u8 sCreditsText_Credits[]                        = _("Credits");
 static const u8 sCreditsText_HackEdits[]                      = _("Romhack");
 static const u8 sCreditsText_Madeline[]                       = _("Madeline Barton");
-static const u8 sCreditsText_Aether[]                         = _("Aether Fae");
+static const u8 sCreditsText_Aether[]                         = _("Aether Saturnia Betamax");
 
 static const u8 sCreditsText_ExecutiveDirector[]              = _("Executive Director");
 static const u8 sCreditsText_Director[]                       = _("Director");
