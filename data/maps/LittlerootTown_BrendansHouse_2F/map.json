@@ -236,6 +236,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_RIVALS_HOUSE_2F_AETHER",
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_NORMAL",
+      "x": 5,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RivalsHouse_2F_EventScript_AETHER",
+      "flag": "0"
     }
   ],
   "warp_events": [

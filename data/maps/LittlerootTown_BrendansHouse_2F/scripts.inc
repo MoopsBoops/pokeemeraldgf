@@ -270,6 +270,14 @@ PlayersHouse_2F_EventScript_GameCube::
 	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
 	end
 
+RivalsHouse_2F_EventScript_AETHER::
+	msgbox PlayersHouse_2F_Text_AETHER, MSGBOX_NPC
+
+	end
+
+PlayersHouse_2F_Text_AETHER:
+	.string "hello {PLAYER}!$"
+
 PlayersHouse_2F_Text_ClockIsStopped:
 	.string "The clock is stopped…\p"
 	.string "Better set it and start it!$"
